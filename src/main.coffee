@@ -47,4 +47,6 @@ tags = {}
 for name in STANDARD_ELEMENTS
   tags[name] = wrap name
 
-export default { wrap, element, fragment, tags }
+pub = { wrap, element, fragment, tags }
+export { wrap, element, fragment, tags }
+export default pub
