@@ -8,10 +8,18 @@ fragment = (children) ->
       console.log child
       console.error "What to do with the above object?"
 
-  React.createElement React.Fragment, null, ...elements
+  React.createElement React.Fragment, children: elements
 
 isString = (object) ->
   (typeof object is 'string') or (object instanceof String)
+
+content = (value) ->
+  if isString value
+    children: value
+  else if Array.isArray value
+    children: value
+  else
+    value
 
 element = ->
   switch arguments.length
@@ -20,16 +28,12 @@ element = ->
       React.createElement component
     when 2
       [component, second] = arguments
-
-      props = if isString second
-        children: second
-      else
-        second
-
+      props = content second
       React.createElement component, props
     when 3
-      [component, props, content] = arguments
-      React.createElement component, props, content
+      [component, props, third] = arguments
+      props.children = third
+      React.createElement component, props
     else
       console.log arguments
       console.error 'What to do with the above arguments?'

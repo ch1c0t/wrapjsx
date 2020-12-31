@@ -23,6 +23,10 @@ App = fragment [
   Button name: 'B'
   div className: 'some', 'Some string'
   div 'Another string'
+  div [
+    div 'first child'
+    div 'second child'
+  ]
 ]
 
 render App, (document.getElementById 'app')
