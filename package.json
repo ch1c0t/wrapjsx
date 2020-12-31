@@ -3,7 +3,7 @@
   "main": "lib/main.js",
   "type": "module",
   "description": "A way to use React without JSX",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "scripts": {
     "dev": "coffee --watch --compile --output lib src"
   },
