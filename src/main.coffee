@@ -1,25 +1,30 @@
 import React from 'react'
 
-fragment = (children) ->
-  elements = for child in children
-    if React.isValidElement child
-      child
-    else
-      console.log child
-      console.error "What to do with the above object?"
+fragment = (iterable) ->
+  React.createElement React.Fragment,
+    children: (prepareArrayChildren iterable)
 
-  React.createElement React.Fragment, children: elements
+prepareArrayChildren = (iterable) ->
+  for element in iterable
+    if React.isValidElement element
+      element
+    else
+      if typeof element is 'function'
+        element()
+      else
+        console.log element
+        console.error "What to do with the above element?"
 
 isString = (object) ->
   (typeof object is 'string') or (object instanceof String)
 
-content = (value) ->
-  if isString value
-    children: value
-  else if Array.isArray value
-    children: value
+prepareProps = (object) ->
+  if isString object
+    children: object
+  else if Array.isArray object
+    children: (prepareArrayChildren object)
   else
-    value
+    object
 
 element = ->
   switch arguments.length
@@ -28,10 +33,13 @@ element = ->
       React.createElement component
     when 2
       [component, second] = arguments
-      props = content second
+      props = prepareProps second
       React.createElement component, props
     when 3
       [component, props, third] = arguments
+      if Array.isArray third
+        third = prepareArrayChildren third
+
       props.children = third
       React.createElement component, props
     else
