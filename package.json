@@ -2,8 +2,14 @@
   "name": "wrapjsx",
   "main": "lib/main.js",
   "type": "module",
-  "description": "A way to use React without JSX",
-  "version": "0.0.5",
+  "description": "A way to use React with functions instead of JSX",
+  "version": "0.0.6",
+  "author": "Anatoly Chernov <chertoly@gmail.com>",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ch1c0t/wrapjsx"
+  },
   "scripts": {
     "dev": "coffee --watch --compile --output lib src"
   },
