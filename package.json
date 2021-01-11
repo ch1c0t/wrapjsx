@@ -3,13 +3,17 @@
   "main": "lib/main.js",
   "type": "module",
   "description": "A way to use React with functions instead of JSX",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "author": "Anatoly Chernov <chertoly@gmail.com>",
   "license": "ISC",
   "repository": {
     "type": "git",
     "url": "https://github.com/ch1c0t/wrapjsx"
   },
+  "keywords": [
+    "coffeescript",
+    "react"
+  ],
   "scripts": {
     "dev": "coffee --watch --compile --output lib src"
   },

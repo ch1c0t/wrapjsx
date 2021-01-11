@@ -1,4 +1,4 @@
-`wrapjsx` provides a way to use React with functions instead of JSX. To install:
+`wrapjsx` is a way to use React with functions instead of JSX. To provide a more convenient syntax, it uses `React.createElement` under the hood. To install:
 
 ```
 npm install wrapjsx
